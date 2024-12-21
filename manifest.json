@@ -3,6 +3,13 @@
   "manifest_version": 3,
   "version": "1.0",
   "name": "hoarder-inject",
-  "description": "A minimum extension template. This template includes a manifest file.",
-  "author": "Your Name"
+  "description": "Inject Hoarder bookmarks into your search result",
+  "author": "DanSnow",
+  "content_scripts": [
+    {
+      "matches": ["https://www.ecosia.org/search*"],
+      "js": ["content.tsx"],
+      "css": ["tailwind.css"]
+    }
+  ]
 }
