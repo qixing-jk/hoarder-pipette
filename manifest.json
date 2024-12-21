@@ -8,8 +8,7 @@
   "content_scripts": [
     {
       "matches": ["https://www.ecosia.org/search*"],
-      "js": ["content.tsx"],
-      "css": ["tailwind.css"]
+      "js": ["./content/content.tsx"]
     }
   ]
 }

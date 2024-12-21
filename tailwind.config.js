@@ -1,11 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ['class'],
-  important: '#hoarder-inject',
   content: [
     './pages/**/*.{html,js,ts,jsx,tsx,mdx}',
-    './**/*.{html,js,ts,jsx,tsx,mdx}',
-    './src/**/*.{html,js,ts,jsx,tsx,mdx}',
+    './content/**/*.{html,js,ts,jsx,tsx,mdx}',
+    './components/**/*.{html,js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
