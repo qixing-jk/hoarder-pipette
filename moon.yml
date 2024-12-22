@@ -3,6 +3,8 @@ tasks:
     command:
       - extension
       - build
+      - --zip
+      - --browser=chrome,firefox
     platform: node
     inputs:
       - atoms/**/*
