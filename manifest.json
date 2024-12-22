@@ -5,6 +5,8 @@
   "name": "hoarder-inject",
   "description": "Inject Hoarder bookmarks into your search result",
   "author": "DanSnow",
+  "permissions": ["storage"],
+  "options_ui": { "page": "./src/options.html" },
   "content_scripts": [
     {
       "matches": ["https://www.ecosia.org/search*"],
