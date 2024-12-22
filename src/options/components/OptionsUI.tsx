@@ -1,39 +1,19 @@
-import { AutoForm, type FieldTypes } from '~/components/ui/autoform'
+import { AutoForm } from '~/components/ui/autoform'
 import { ZodProvider } from '@autoform/zod'
-import { z } from 'zod'
-import { buildZodFieldConfig } from '@autoform/react'
 import { Button } from '~/components/ui/button'
 import { Toaster } from '~/components/ui/toaster'
 import { useCallback } from 'react'
 import { useToast } from '~/hooks/use-toast'
 import { createClient } from '~/client'
+import { AppOptionsSchema } from '~/schemas/options'
+import type { z } from 'zod'
 
-const fieldConfig = buildZodFieldConfig<FieldTypes>()
-
-const optionSchema = z.object({
-  url: z
-    .string()
-    .url()
-    .superRefine(
-      fieldConfig({
-        label: 'URL',
-        description: 'Your Hoarder instance URL',
-      }),
-    ),
-  apiKey: z.string().superRefine(
-    fieldConfig({
-      label: 'API Key',
-      description: 'Your API key',
-    }),
-  ),
-})
-
-const schemaProvider = new ZodProvider(optionSchema)
+const schemaProvider = new ZodProvider(AppOptionsSchema)
 
 export function OptionsUI() {
   const { toast } = useToast()
   const handleSubmit = useCallback(
-    async (data: z.infer<typeof optionSchema>) => {
+    async (data: z.infer<typeof AppOptionsSchema>) => {
       const client = createClient(data.url, data.apiKey)
 
       try {

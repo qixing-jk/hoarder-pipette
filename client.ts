@@ -6,7 +6,7 @@ const c = initContract();
 const BookmarkId = z.string();
 const ListId = z.string();
 const TagId = z.string();
-const Bookmark = z
+export const BookmarkSchema = z
   .object({
     id: z.string(),
     createdAt: z.string(),
@@ -78,7 +78,10 @@ const Bookmark = z
   })
   .passthrough();
 const PaginatedBookmarks = z
-  .object({ bookmarks: z.array(Bookmark), nextCursor: z.string().nullable() })
+  .object({
+    bookmarks: z.array(BookmarkSchema),
+    nextCursor: z.string().nullable(),
+  })
   .passthrough();
 const Cursor = z.string();
 const List = z
@@ -104,7 +107,7 @@ export const schemas = {
   BookmarkId,
   ListId,
   TagId,
-  Bookmark,
+  Bookmark: BookmarkSchema,
   PaginatedBookmarks,
   Cursor,
   List,
@@ -127,7 +130,7 @@ export const contract = c.router({
         result: z.object({
           data: z.object({
             json: z.object({
-              bookmarks: z.array(Bookmark),
+              bookmarks: z.array(BookmarkSchema),
             }),
           }),
         }),
@@ -184,14 +187,14 @@ export const contract = c.router({
         ]),
       ),
     contentType: 'application/json',
-    responses: { 201: Bookmark },
+    responses: { 201: BookmarkSchema },
   },
   getBookmark: {
     method: 'GET',
     path: '/api/v1/bookmarks/:bookmarkId',
     summary: 'Get a single bookmark',
     pathParams: z.object({ bookmarkId: z.string() }),
-    responses: { 200: Bookmark },
+    responses: { 200: BookmarkSchema },
   },
   deleteBookmark: {
     method: 'DELETE',
@@ -399,5 +402,6 @@ export function createClient(baseUrl: string, apiKey: string) {
       Authorization: `Bearer ${apiKey}`,
     },
     validateResponse: true,
+    jsonQuery: true,
   });
 }
