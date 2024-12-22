@@ -4,6 +4,7 @@ import { getUserQuery } from '~/lib/search-engines';
 
 export function useUserQuery() {
   const [query, setQuery] = useState('');
+
   useEffectOnce(() => {
     try {
       const userQuery = getUserQuery();
@@ -12,5 +13,6 @@ export function useUserQuery() {
       }
     } catch {}
   });
+
   return query;
 }

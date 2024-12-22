@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader } from '~/components/ui/card'
 import { useClient } from '~/hooks/use-client'
 import { pipe, Array } from 'effect'
 import { useUserQuery } from '~/hooks/use-user-query'
+import { ScrollBar, ScrollArea } from '~/components/ui/scroll-area'
 
 export function HoarderCard() {
   const client = useClient()
@@ -40,13 +41,16 @@ export function HoarderCard() {
         <h2 className="text-xl font-bold">Hoarder Bookmarks</h2>
       </CardHeader>
       <CardContent>
-        <div className="flex flex-col gap-2">
-          {pipe(
-            data ?? [],
-            Array.filter((bookmark) => bookmark.content.type === 'link'),
-            Array.map((bookmark) => <BookmarkPreview key={bookmark.id} bookmark={bookmark} />),
-          )}
-        </div>
+        <ScrollArea className="h-72">
+          <div className="flex flex-col">
+            {pipe(
+              data ?? [],
+              Array.filter((bookmark) => bookmark.content.type === 'link'),
+              Array.map((bookmark) => <BookmarkPreview key={bookmark.id} bookmark={bookmark} />),
+            )}
+          </div>
+          <ScrollBar orientation="vertical" />
+        </ScrollArea>
       </CardContent>
     </Card>
   )
