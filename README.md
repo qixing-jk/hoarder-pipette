@@ -1,4 +1,4 @@
-# Hoarder Inject
+# Hoarder Injector
 
 ## Introduction
 

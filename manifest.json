@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/chrome-manifest.json",
   "manifest_version": 3,
   "version": "1.0",
-  "name": "Hoarder Inject",
+  "name": "Hoarder Injector",
   "description": "Inject Hoarder bookmarks into your search result",
   "author": "DanSnow",
   "permissions": ["storage"],
