@@ -1,12 +1,20 @@
-# hoarder-inject
+# Hoarder Inject
 
-> A minimum extension template. This template includes a manifest file.
+## Introduction
 
-## Available Scripts
+Hoarder Inject is an extension that inject your bookmarks from your [Hoarder app](https://hoarder.app) into your search results.
+
+### Support Search Engines
+
+- Ecosia
+
+## Development
+
+### Available Scripts
 
 In the project directory, you can run the following scripts:
 
-### pnpm dev
+#### pnpm dev
 
 **Development Mode**: This command runs your extension in development mode. It will launch a new browser instance with your extension loaded. The page will automatically reload whenever you make changes to your code, allowing for a smooth development experience.
 
@@ -14,7 +22,7 @@ In the project directory, you can run the following scripts:
 pnpm dev
 ```
 
-### pnpm start
+#### pnpm start
 
 **Production Preview**: This command runs your extension in production mode. It will launch a new browser instance with your extension loaded, simulating the environment and behavior of your extension as it will appear once published.
 
@@ -22,7 +30,7 @@ pnpm dev
 pnpm start
 ```
 
-### pnpm build
+#### pnpm build
 
 **Build for Production**: This command builds your extension for production. It optimizes and bundles your extension, preparing it for deployment to the target browser's store.
 
@@ -30,6 +38,7 @@ pnpm start
 pnpm build
 ```
 
-## Learn More
+## Credits
 
-To learn more about creating cross-browser extensions with Extension.js, visit the [official documentation](https://extension.js.org).
+- Inspired by https://github.com/fivefold/linkding-injector
+- Based on the [Extension.js](https://extension.js.org) framework
