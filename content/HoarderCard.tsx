@@ -3,12 +3,10 @@ import { BookmarkPreview } from '~/components/BookmarkPreview'
 import { Card, CardContent, CardHeader } from '~/components/ui/card'
 import { useClient } from '~/hooks/use-client'
 import { pipe, Array } from 'effect'
-import { useUserQuery } from '~/hooks/use-user-query'
 import { ScrollBar, ScrollArea } from '~/components/ui/scroll-area'
 
-export function HoarderCard() {
+export function HoarderCard({ userQuery }: { userQuery: string }) {
   const client = useClient()
-  const userQuery = useUserQuery()
   const { data } = useQuery({
     placeholderData: [],
     enabled: Boolean(userQuery),
