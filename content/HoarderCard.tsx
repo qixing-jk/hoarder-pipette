@@ -4,8 +4,11 @@ import { Card, CardContent, CardHeader } from '~/components/ui/card'
 import { useClient } from '~/hooks/use-client'
 import { pipe, Array } from 'effect'
 import { ScrollBar, ScrollArea } from '~/components/ui/scroll-area'
+import { useAtomValue } from 'jotai'
+import { optionsAtom } from '~/atoms/storage'
 
 export function HoarderCard({ userQuery }: { userQuery: string }) {
+  const options = useAtomValue(optionsAtom)
   const client = useClient()
   const { data } = useQuery({
     placeholderData: [],
@@ -30,9 +33,18 @@ export function HoarderCard({ userQuery }: { userQuery: string }) {
     },
   })
 
+  if (!options.apiKey || !options.url) {
+    return (
+      <h2 className="text-xl font-bold">
+        Please open Hoarder Injector options page to configure your API key and URL.
+      </h2>
+    )
+  }
+
   if (!userQuery) {
     return null
   }
+
   return (
     <Card>
       <CardHeader>
