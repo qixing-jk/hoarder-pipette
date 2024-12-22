@@ -1,9 +1,7 @@
 import '~/styles/tailwind.css?inline_style'
-import invariant from 'tiny-invariant'
 import { createRoot } from 'react-dom/client'
-import { Button } from '~/components/ui/button'
-import { $ } from '~/lib/utils'
 import { ContentRoot } from './ContentRoot'
+import { getRenderRoot } from '~/lib/search-engines'
 
 if (document.readyState === 'complete') {
   initial()
@@ -14,24 +12,6 @@ if (document.readyState === 'complete') {
 }
 
 function initial() {
-  const firstSearchResult = $('[data-test-id=mainline]')
-  invariant(firstSearchResult, 'inject point not found')
-  const rootDiv = document.createElement('div')
-  rootDiv.id = 'extension-root'
-  firstSearchResult.prepend(rootDiv)
-
-  // Injecting content_scripts inside a shadow dom
-  // prevents conflicts with the host page's styles.
-  // This way, styles from the extension won't leak into the host page.
-  const shadowRoot = rootDiv.attachShadow({ mode: 'open' })
-
-  // Inform Extension.js that the shadow root is available.
-  window.__EXTENSION_SHADOW_ROOT__ = shadowRoot
-
-  const $container = document.createElement('div')
-  $container.id = 'hoarder-inject'
-  shadowRoot.append($container)
-
-  const root = createRoot($container)
+  const root = createRoot(getRenderRoot())
   root.render(<ContentRoot />)
 }

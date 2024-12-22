@@ -10,3 +10,12 @@ export function getUserQuery() {
   }
   throw new Error('Unsupported engine');
 }
+
+export function getRenderRoot(): HTMLElement {
+  for (const engine of supportedEngines) {
+    if (window.location.href.startsWith(engine.url)) {
+      return engine.getRenderRoot();
+    }
+  }
+  throw new Error('Unsupported engine');
+}
