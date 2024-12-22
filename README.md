@@ -4,6 +4,8 @@
 
 Hoarder Inject is an extension that inject your bookmarks from your [Hoarder app](https://hoarder.app) into your search results.
 
+![demo](/assets/demo.png)
+
 ### Support Search Engines
 
 - Ecosia
