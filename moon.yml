@@ -1,0 +1,46 @@
+tasks:
+  build-ext:
+    command:
+      - extension
+      - build
+    platform: node
+    inputs:
+      - atoms/**/*
+      - components/**/*
+      - hooks/**/*
+      - lib/**/*
+      - schemas/**/*
+      - src/**/*
+      - styles/**/*
+      - client.ts
+      - store.ts
+      - tailwind.config.js
+      - postcss.config.js
+      - manifest.json
+    outputs:
+      - dist/**/*
+  pack-crx:
+    command: crx pack dist/chrome
+    platform: node
+    inputs:
+      - dist/chrome/**/*
+    outputs:
+      - hoarder-injector.crx
+    deps:
+      - build-ext
+  build:
+    command: noop
+    deps:
+      - pack-crx
+  dev:
+    command:
+      - extension
+      - dev
+    local: true
+    platform: node
+  start:
+    command:
+      - extension
+      - start
+    local: true
+    platform: node

@@ -25,3 +25,8 @@ yarn-error.log*
 
 # extension.js
 extension-env.d.ts
+# moon
+.moon/cache
+.moon/docker
+
+*.crx
