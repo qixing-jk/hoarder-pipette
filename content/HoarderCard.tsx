@@ -35,8 +35,8 @@ export function HoarderCard({ userQuery }: { userQuery: string }) {
 
   if (!options.apiKey || !options.url) {
     return (
-      <h2 className="text-xl font-bold">
-        Please open Hoarder Injector options page to configure your API key and URL.
+      <h2 className="text-lg font-bold text-center">
+        Hoarder Injector: Please open options page to configure your API key and URL
       </h2>
     )
   }
