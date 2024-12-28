@@ -23,6 +23,9 @@ export const AppOptionsSchema = z.object({
     fieldConfig({
       label: 'API Key',
       description: 'Your API key',
+      inputProps: {
+        type: 'password',
+      },
     }),
   ),
 });

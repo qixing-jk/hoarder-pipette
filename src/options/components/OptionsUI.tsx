@@ -7,10 +7,13 @@ import { useToast } from '~/hooks/use-toast'
 import { createClient } from '~/client'
 import { AppOptionsSchema } from '~/schemas/options'
 import type { z } from 'zod'
+import { useAtomValue } from 'jotai'
+import { optionsAtom } from '~/atoms/storage'
 
 const schemaProvider = new ZodProvider(AppOptionsSchema)
 
 export function OptionsUI() {
+  const initialValues = useAtomValue(optionsAtom)
   const { toast } = useToast()
   const handleSubmit = useCallback(
     async (data: z.infer<typeof AppOptionsSchema>) => {
@@ -43,7 +46,7 @@ export function OptionsUI() {
   return (
     <div className="container p-2 mx-auto lg:py-8">
       <h1 className="mb-4 text-2xl font-bold">Options</h1>
-      <AutoForm schema={schemaProvider} onSubmit={handleSubmit}>
+      <AutoForm schema={schemaProvider} defaultValues={initialValues} onSubmit={handleSubmit}>
         <Button type="submit">Save</Button>
       </AutoForm>
       <Toaster />
