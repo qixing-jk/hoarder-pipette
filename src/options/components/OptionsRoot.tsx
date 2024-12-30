@@ -6,9 +6,7 @@ export function OptionsRoot() {
   const [store] = useState(createStore())
   return (
     <Provider store={store}>
-      <Suspense>
-        <OptionsUI />
-      </Suspense>
+      <OptionsUI />
     </Provider>
   )
 }

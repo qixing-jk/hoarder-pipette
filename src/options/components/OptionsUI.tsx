@@ -1,55 +1,20 @@
-import { AutoForm } from '~/components/ui/autoform'
-import { ZodProvider } from '@autoform/zod'
-import { Button } from '~/components/ui/button'
 import { Toaster } from '~/components/ui/toaster'
-import { useCallback } from 'react'
-import { useToast } from '~/hooks/use-toast'
-import { createClient } from '~/client'
-import { AppOptionsSchema } from '~/schemas/options'
-import type { z } from 'zod'
-import { useAtomValue } from 'jotai'
-import { optionsAtom } from '~/atoms/storage'
-
-const schemaProvider = new ZodProvider(AppOptionsSchema)
+import { useMedia } from 'react-use'
+import { cn } from '~/lib/utils'
+import { OptionsForm } from './OptionsForm'
+import { Suspense } from 'react'
 
 export function OptionsUI() {
-  const initialValues = useAtomValue(optionsAtom)
-  const { toast } = useToast()
-  const handleSubmit = useCallback(
-    async (data: z.infer<typeof AppOptionsSchema>) => {
-      const client = createClient(data.url, data.apiKey)
-
-      try {
-        const res = await client.getLists()
-        if (res.status !== 200) {
-          toast({
-            title: 'Invalid config, please check your config and try again.',
-            description: `Expected status 200, but got ${res.status}`,
-          })
-          return
-        }
-        console.log(res)
-      } catch (error) {
-        toast({
-          title: 'Invalid config, please check your config and try again.',
-          description: (error as Error).message,
-        })
-        return
-      }
-      await chrome.storage.sync.set(data)
-      toast({
-        title: 'Config Saved',
-      })
-    },
-    [toast],
-  )
+  const isDark = useMedia('(prefers-color-scheme: dark)')
   return (
-    <div className="container p-2 mx-auto lg:py-8">
-      <h1 className="mb-4 text-2xl font-bold">Options</h1>
-      <AutoForm schema={schemaProvider} defaultValues={initialValues} onSubmit={handleSubmit}>
-        <Button type="submit">Save</Button>
-      </AutoForm>
-      <Toaster />
+    <div className={cn({ dark: isDark })}>
+      <div className="container mx-auto min-w-64 p-2 lg:py-8 dark:bg-black dark:text-white">
+        <h1 className="mb-4 font-bold text-2xl">Options</h1>
+        <Suspense>
+          <OptionsForm />
+        </Suspense>
+        <Toaster />
+      </div>
     </div>
   )
 }

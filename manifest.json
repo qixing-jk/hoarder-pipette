@@ -7,6 +7,9 @@
   "author": "DanSnow",
   "permissions": ["storage"],
   "options_ui": { "page": "./src/options.html" },
+  "action": {
+    "default_popup": "./src/options.html"
+  },
   "content_scripts": [
     {
       "matches": ["https://www.google.com/search*"],

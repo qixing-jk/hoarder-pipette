@@ -1,13 +1,13 @@
-import { buildZodFieldConfig } from '@autoform/react';
-import { z } from 'zod';
-import type { FieldTypes } from '~/components/ui/autoform';
+import { buildZodFieldConfig } from '@autoform/react'
+import { z } from 'zod'
+import type { FieldTypes } from '~/components/ui/autoform'
 
-const fieldConfig = buildZodFieldConfig<FieldTypes>();
+const fieldConfig = buildZodFieldConfig<FieldTypes>()
 
 export const LooseOptionsSchema = z.object({
   url: z.string(),
   apiKey: z.string(),
-});
+})
 
 export const AppOptionsSchema = z.object({
   url: z
@@ -28,6 +28,6 @@ export const AppOptionsSchema = z.object({
       },
     }),
   ),
-});
+})
 
-export type AppOptions = z.infer<typeof AppOptionsSchema>;
+export type AppOptions = z.infer<typeof AppOptionsSchema>

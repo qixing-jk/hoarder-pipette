@@ -14,5 +14,5 @@ if (document.readyState === 'complete') {
 function initial() {
   const renderRoot = getRenderRoot()
   const root = createRoot(renderRoot)
-  root.render(<ContentRoot root={renderRoot} />)
+  root.render(<ContentRoot />)
 }
