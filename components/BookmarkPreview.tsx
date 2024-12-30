@@ -1,27 +1,43 @@
 import invariant from 'tiny-invariant'
 import type { z } from 'zod'
 import type { BookmarkSchema } from '~/client'
+import { cn, decodeEntities } from '~/lib/utils'
+import { BookmarkMenu } from './BookmarkMenu'
+import { useAtomValue } from 'jotai'
+import { containerAtom } from '~/atoms/container'
 
 export function BookmarkPreview({ bookmark }: { bookmark: z.infer<typeof BookmarkSchema> }) {
   invariant(bookmark.content.type === 'link', 'bookmark is not link')
 
+  const { imageUrl, title, description } = bookmark.content
+  const hasImage = !!imageUrl
+
+  const container = useAtomValue(containerAtom)
+  console.log(container)
+
   return (
-    <a href={bookmark.content.url} target="_blank" rel="noreferrer noopener">
-      <div className="flex items-center gap-2 p-2">
-        {bookmark.content.imageUrl && (
-          <div className="relative size-32 aspect-square overflow-clip">
-            <img
-              className="absolute inset-0 object-contain m-auto"
-              src={bookmark.content.imageUrl}
-              alt={bookmark.content.title || 'image'}
-            />
+    <div className="relative">
+      <a className="block h-full min-h-16" href={bookmark.content.url} target="_blank" rel="noreferrer noopener">
+        <div
+          className={cn(
+            'flex items-center gap-2 p-2 h-full transition-all duration-200 shadow-none hover:shadow-lg dark:shadow-gray-500',
+            {
+              'px-4': !hasImage,
+            },
+          )}
+        >
+          {imageUrl && (
+            <div className="relative size-32 aspect-square overflow-clip">
+              <img className="absolute inset-0 object-contain m-auto" src={imageUrl} alt={title || 'image'} />
+            </div>
+          )}
+          <div>
+            <h3 className="font-bold">{decodeEntities(title ?? '')}</h3>
+            <p className="text-gray-500 dark:text-gray-300 line-clamp-2">{decodeEntities(description ?? '')}</p>
           </div>
-        )}
-        <div>
-          <h3 className="text-bold">{bookmark.title}</h3>
-          <p className="text-gray-500 dark:text-gray-300 line-clamp-2">{bookmark.content.description}</p>
         </div>
-      </div>
-    </a>
+      </a>
+      <BookmarkMenu bookmark={bookmark} className="absolute top-0 right-0" />
+    </div>
   )
 }

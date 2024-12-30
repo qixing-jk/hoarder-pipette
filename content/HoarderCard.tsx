@@ -7,7 +7,7 @@ import { ScrollBar, ScrollArea } from '~/components/ui/scroll-area'
 import { useAtomValue } from 'jotai'
 import { optionsAtom } from '~/atoms/storage'
 
-export function HoarderCard({ userQuery }: { userQuery: string }) {
+export function HoarderCard({ className, userQuery }: { className?: string; userQuery: string }) {
   const options = useAtomValue(optionsAtom)
   const client = useClient()
   const { data } = useQuery({
@@ -46,13 +46,13 @@ export function HoarderCard({ userQuery }: { userQuery: string }) {
   }
 
   return (
-    <Card>
+    <Card className={className}>
       <CardHeader>
         <h2 className="text-xl font-bold">Hoarder Bookmarks</h2>
       </CardHeader>
       <CardContent>
-        <ScrollArea className="h-72">
-          <div className="flex flex-col">
+        <ScrollArea className="pr-8 h-72">
+          <div className="flex flex-col gap-2">
             {pipe(
               data ?? [],
               Array.filter((bookmark) => bookmark.content.type === 'link'),

@@ -1,3 +1,5 @@
+const { iconsPlugin, getIconCollections } = require('@egoist/tailwindcss-icons')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ['class'],
@@ -45,11 +47,16 @@ module.exports = {
         },
       },
       borderRadius: {
-        lg: `var(--radius)`,
-        md: `calc(var(--radius) - 2px)`,
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    iconsPlugin({
+      collections: getIconCollections(['lucide']),
+    }),
+  ],
 }

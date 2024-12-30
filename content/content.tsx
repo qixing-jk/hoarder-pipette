@@ -12,6 +12,7 @@ if (document.readyState === 'complete') {
 }
 
 function initial() {
-  const root = createRoot(getRenderRoot())
-  root.render(<ContentRoot />)
+  const renderRoot = getRenderRoot()
+  const root = createRoot(renderRoot)
+  root.render(<ContentRoot root={renderRoot} />)
 }

@@ -19,3 +19,9 @@ export function $$<S extends string>(
 ): NodeListOf<ParseSelector<S>> | null {
   return context.querySelectorAll(selector);
 }
+
+export function decodeEntities(str: string): string {
+  const textarea = document.createElement('textarea');
+  textarea.innerHTML = str;
+  return textarea.value;
+}
