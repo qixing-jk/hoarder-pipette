@@ -13,9 +13,9 @@
     "hoarder"
   ],
   "scripts": {
-    "build": "moon run build",
-    "start": "moon run start",
-    "dev": "moon run dev"
+    "build": "moon run build --",
+    "start": "moon run start --",
+    "dev": "moon run dev --"
   },
   "pnpm": {
     "overrides": {
