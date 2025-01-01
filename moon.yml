@@ -1,4 +1,17 @@
 tasks:
+  build-logo:
+    script: |
+      rsvg-convert -h 16 assets/logo.svg > assets/logo16.png
+      rsvg-convert -h 48 assets/logo.svg > assets/logo48.png
+      rsvg-convert -h 128 assets/logo.svg > assets/logo128.png
+      rsvg-convert -h 256 assets/logo.svg > assets/logo256.png
+    inputs:
+      - assets/logo.svg
+    outputs:
+      - assets/logo16.png
+      - assets/logo48.png
+      - assets/logo128.png
+      - assets/logo256.png
   build-ext:
     command:
       - extension

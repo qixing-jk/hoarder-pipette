@@ -12,6 +12,13 @@ Hoarder Inject is an extension that inject your bookmarks from your [Hoarder app
 
 ## Development
 
+### Requirements
+
+- Node.js
+- pnpm
+- librsvg (for converting logo to png)
+
+
 ### Available Scripts
 
 In the project directory, you can run the following scripts:

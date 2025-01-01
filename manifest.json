@@ -7,6 +7,12 @@
   "author": "DanSnow",
   "permissions": ["storage"],
   "options_ui": { "page": "./src/options.html" },
+  "icons": {
+    "16": "assets/logo16.png",
+    "48": "assets/logo48.png",
+    "128": "assets/logo128.png",
+    "256": "assets/logo256.png"
+  },
   "action": {
     "default_popup": "./src/options.html"
   },
