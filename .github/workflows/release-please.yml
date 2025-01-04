@@ -52,5 +52,6 @@ jobs:
             ./dist/firefox/hoarders-pipette-*.zip
      - run: gh release upload ${{ needs.release-please.outputs.tag_name }} ./dist/chrome/hoarders-pipette-*.zip ./dist/firefox/hoarders-pipette-*.zip
        env:
-         GH_TOKEN: ${{ secrets.GH_TOKEN }}
+         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
