@@ -32,7 +32,9 @@ jobs:
     steps:
      - uses: actions/checkout@v4
        with:
-         ref: ${{ steps.release.outputs.tag_name }}
+         ref: ${{ needs.release-please.outputs.tag_name }}
+         fetch-depth: 0
+     - uses: moonrepo/setup-toolchain@v0
      - uses: pnpm/action-setup@v4
        with:
          run_install: false
