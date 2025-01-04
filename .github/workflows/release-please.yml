@@ -4,6 +4,8 @@ on:
       - main
 
 permissions:
+  id-token: write
+  attestations: write
   contents: write
   pull-requests: write
 
@@ -40,5 +42,11 @@ jobs:
          cache: 'pnpm'
      - run: pnpm install
      - run: pnpm build
+     - name: Attest
+       uses: actions/attest-build-provenance@v2
+       with:
+         subject-path: |
+            ./dist/chrome/hoarders-pipette-*.zip
+            ./dist/firefox/hoarders-pipette-*.zip
      - run: gh release upload ${{ needs.release-please.outputs.tag_name }} ./dist/chrome/hoarders-pipette-*.zip ./dist/firefox/hoarders-pipette-*.zip
   
