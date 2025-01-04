@@ -35,7 +35,7 @@ export function HoarderCard({ className, userQuery }: { className?: string; user
 
   if (!options.apiKey || !options.url) {
     return (
-      <h2 className="text-lg font-bold text-center">
+      <h2 className='text-center font-bold text-lg'>
         Hoarder Injector: Please open options page to configure your API key and URL
       </h2>
     )
@@ -48,10 +48,10 @@ export function HoarderCard({ className, userQuery }: { className?: string; user
   return (
     <Card className={className}>
       <CardHeader>
-        <h2 className="text-xl font-bold">Hoarder Bookmarks</h2>
+        <h2 className='font-bold text-xl'>Hoarder Bookmarks</h2>
       </CardHeader>
       <CardContent>
-        <ScrollArea className="pr-8 h-72">
+        <ScrollArea className='h-72 pr-8'>
           <div className="flex flex-col gap-2">
             {pipe(
               data ?? [],

@@ -20,20 +20,20 @@ export function BookmarkPreview({ bookmark }: { bookmark: z.infer<typeof Bookmar
       <a className="block h-full min-h-16" href={bookmark.content.url} target="_blank" rel="noreferrer noopener">
         <div
           className={cn(
-            'flex items-center gap-2 p-2 h-full transition-all duration-200 shadow-none hover:shadow-lg dark:shadow-gray-500',
+            'flex h-full items-center gap-2 p-2 shadow-none transition-all duration-200 hover:shadow-lg dark:shadow-gray-500',
             {
               'px-4': !hasImage,
             },
           )}
         >
           {imageUrl && (
-            <div className="relative size-32 aspect-square overflow-clip">
-              <img className="absolute inset-0 object-contain m-auto" src={imageUrl} alt={title || 'image'} />
+            <div className='relative aspect-square size-32 overflow-clip'>
+              <img className='absolute inset-0 m-auto object-contain' src={imageUrl} alt={title || 'image'} />
             </div>
           )}
           <div>
             <h3 className="font-bold">{decodeEntities(title ?? '')}</h3>
-            <p className="text-gray-500 dark:text-gray-300 line-clamp-2">{decodeEntities(description ?? '')}</p>
+            <p className='line-clamp-2 text-gray-500 dark:text-gray-300'>{decodeEntities(description ?? '')}</p>
           </div>
         </div>
       </a>
