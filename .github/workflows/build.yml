@@ -1,0 +1,21 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+name: build
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+     - uses: actions/checkout@v4
+       with:
+         ref: ${{ steps.release.outputs.tag_name }}
+     - uses: actions/setup-node@v4
+       with:
+         node-version: '22'
+         cache: 'pnpm'
+     - run: pnpm build
+  
