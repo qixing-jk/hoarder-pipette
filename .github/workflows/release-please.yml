@@ -49,8 +49,8 @@ jobs:
        with:
          subject-path: |
             ./dist/chrome/hoarders-pipette-*.zip
-            ./dist/firefox/hoarders-pipette-*.zip
-     - run: gh release upload ${{ needs.release-please.outputs.tag_name }} ./dist/chrome/hoarders-pipette-*.zip ./dist/firefox/hoarders-pipette-*.zip
+            ./dist/firefox/hoarders-pipette-*.xpi
+     - run: gh release upload ${{ needs.release-please.outputs.tag_name }} ./dist/chrome/hoarders-pipette-*.zip ./dist/firefox/hoarders-pipette-*.xpi
        env:
          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
