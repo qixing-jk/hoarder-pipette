@@ -2,16 +2,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/DanSnow/hoarder-injector.git"
+    "url": "https://github.com/DanSnow/hoarder-pipette.git"
   },
-  "name": "hoarder-injector",
+  "name": "hoarder-pipette",
   "description": "An extension to inject bookmarks from your Hoarder app",
   "version": "0.0.1",
-  "keywords": [
-    "extension",
-    "browser-extension",
-    "hoarder"
-  ],
+  "keywords": ["extension", "browser-extension", "hoarder"],
   "scripts": {
     "build": "moon run build --",
     "start": "moon run start --",
