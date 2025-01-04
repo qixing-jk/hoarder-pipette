@@ -34,19 +34,10 @@ tasks:
       - manifest.json
     outputs:
       - dist/**/*
-  pack-crx:
-    command: crx pack dist/chrome
-    platform: node
-    inputs:
-      - dist/chrome/**/*
-    outputs:
-      - hoarder-injector.crx
-    deps:
-      - build-ext
   build:
     command: noop
     deps:
-      - pack-crx
+      - build-ext
   dev:
     command:
       - extension
