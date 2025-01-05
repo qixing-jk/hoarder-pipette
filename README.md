@@ -15,6 +15,10 @@ Hoarder's Pipette integrates directly with the Hoarder app by utilizing its API.
 
 I plan to add support for more search engines in the future. If you'd like to see support for a specific search engine, please open an issue on this repository.
 
+## Installation
+
+Please visit the [document site](https://dansnow.github.io/hoarder-pipette/guides/installation/)
+
 ## Development
 
 ### Requirements
