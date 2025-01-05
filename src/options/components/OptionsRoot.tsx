@@ -1,5 +1,5 @@
 import { createStore, Provider } from 'jotai'
-import { Suspense, useState } from 'react'
+import { useState } from 'react'
 import { OptionsUI } from './OptionsUI'
 
 export function OptionsRoot() {

@@ -16,6 +16,7 @@ export const AppOptionsSchema = z.object({
     .superRefine(
       fieldConfig({
         label: 'URL',
+        fieldType: 'urlWithApiLink',
         description: 'Your Hoarder instance URL',
       }),
     ),
