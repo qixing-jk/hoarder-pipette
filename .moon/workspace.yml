@@ -16,3 +16,4 @@ vcs:
 # and cannot reference projects located outside the workspace boundary.
 projects:
   - '.'
+  - docs

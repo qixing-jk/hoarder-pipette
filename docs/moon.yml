@@ -1,0 +1,12 @@
+tasks:
+  build:
+    command:
+      - astro
+      - build
+    platform: node
+    inputs:
+      - src/**/*
+      - public/**/*
+      - astro.config.mjs
+    outputs:
+      - dist
