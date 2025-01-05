@@ -5,10 +5,8 @@
   "homepage_url": "https://dansnow.github.io/hoarder-pipette/",
   "name": "Hoarder's Pipette",
   "description": "Search smarter. Find your Hoarder bookmarks directly in search results.",
-  "author": "DanSnow",
-  "permissions": [
-    "storage"
-  ],
+  "author": "David Peng",
+  "permissions": ["storage"],
   "options_ui": {
     "page": "./src/options.html"
   },
@@ -23,20 +21,12 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "https://www.google.com/search*"
-      ],
-      "js": [
-        "./content/content.tsx"
-      ]
+      "matches": ["https://www.google.com/search*"],
+      "js": ["./content/content.tsx"]
     },
     {
-      "matches": [
-        "https://www.ecosia.org/search*"
-      ],
-      "js": [
-        "./content/content.tsx"
-      ]
+      "matches": ["https://www.ecosia.org/search*"],
+      "js": ["./content/content.tsx"]
     }
   ]
 }
