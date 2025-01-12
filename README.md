@@ -26,6 +26,7 @@ Please visit the [document site](https://dansnow.github.io/hoarder-pipette/guide
 - Node.js
 - pnpm
 - librsvg (for converting logo to png)
+- imagick (for processing logo)
 
 
 ### Available Scripts
