@@ -9,6 +9,8 @@ tasks:
       magick -size 128x128 xc:transparent assets/canvas.png
       magick assets/canvas.png assets/logo96.png -gravity center -composite assets/logo96-extent.png
       rm assets/canvas.png
+      cp assets/logo.svg docs/public/favicon.svg
+      cp assets/logo.svg docs/src/assets/logo.svg
     inputs:
       - assets/logo.svg
     outputs:
