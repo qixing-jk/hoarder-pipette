@@ -2,6 +2,8 @@
 import { defineConfig } from 'astro/config'
 import starlight from '@astrojs/starlight'
 
+import tailwind from '@astrojs/tailwind'
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://dansnow.github.io',
@@ -9,6 +11,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Hoarder' Pipette",
+      customCss: ['./src/tailwind.css'],
       logo: {
         src: './src/assets/logo.svg',
       },
@@ -28,6 +31,9 @@ export default defineConfig({
           ],
         },
       ],
+    }),
+    tailwind({
+      applyBaseStyles: false,
     }),
   ],
 })
