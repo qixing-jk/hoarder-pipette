@@ -3,17 +3,12 @@ import type { z } from 'zod'
 import type { BookmarkSchema } from '~/client'
 import { cn, decodeEntities } from '~/lib/utils'
 import { BookmarkMenu } from './BookmarkMenu'
-import { useAtomValue } from 'jotai'
-import { containerAtom } from '~/atoms/container'
 
 export function BookmarkPreview({ bookmark }: { bookmark: z.infer<typeof BookmarkSchema> }) {
   invariant(bookmark.content.type === 'link', 'bookmark is not link')
 
   const { imageUrl, title, description } = bookmark.content
   const hasImage = !!imageUrl
-
-  const container = useAtomValue(containerAtom)
-  console.log(container)
 
   return (
     <div className="relative">
@@ -27,13 +22,13 @@ export function BookmarkPreview({ bookmark }: { bookmark: z.infer<typeof Bookmar
           )}
         >
           {imageUrl && (
-            <div className='relative aspect-square size-32 overflow-clip'>
-              <img className='absolute inset-0 m-auto object-contain' src={imageUrl} alt={title || 'image'} />
+            <div className="relative aspect-square size-32 overflow-clip">
+              <img className="absolute inset-0 m-auto object-contain" src={imageUrl} alt={title || 'image'} />
             </div>
           )}
           <div>
             <h3 className="font-bold">{decodeEntities(title ?? '')}</h3>
-            <p className='line-clamp-2 text-gray-500 dark:text-gray-300'>{decodeEntities(description ?? '')}</p>
+            <p className="line-clamp-2 text-gray-500 dark:text-gray-300">{decodeEntities(description ?? '')}</p>
           </div>
         </div>
       </a>
