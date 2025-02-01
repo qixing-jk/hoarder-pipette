@@ -58,7 +58,7 @@ export function HoarderCard({ className, userQuery }: { className?: string; user
         <ScrollArea className="h-72 pr-8">
           <div className="flex flex-col gap-2">
             {pipe(
-              data ?? [],
+              data,
               Array.filter((bookmark) => bookmark.content.type === 'link'),
               Array.map((bookmark) => <BookmarkPreview key={bookmark.id} bookmark={bookmark} />),
             )}
