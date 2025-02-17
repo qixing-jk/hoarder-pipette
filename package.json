@@ -20,7 +20,14 @@
   "pnpm": {
     "overrides": {
       "react": "19.0.0"
-    }
+    },
+    "ignoredBuiltDependencies": [
+      "svelte-preprocess"
+    ],
+    "onlyBuiltDependencies": [
+      "@moonrepo/cli",
+      "@swc/core"
+    ]
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
