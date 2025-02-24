@@ -1,22 +1,28 @@
 import { AutoForm } from '~/components/ui/autoform'
-import { ZodProvider } from '@autoform/zod'
-import { useAtomValue } from 'jotai'
+import { createFileRoute } from '@tanstack/react-router'
+import { useAtom } from 'jotai'
 import { useCallback } from 'react'
 import type { z } from 'zod'
 import { optionsAtom } from '~/atoms/storage'
 import { createClient } from '~/client'
-import { Button } from '~/components/ui/button'
 import { useToast } from '~/hooks/use-toast'
-import { AppOptionsSchema } from '~/schemas/options'
+import { InstanceOptionsSchema } from '~/schemas/options'
+import { Button } from '~/components/ui/button'
+import { ZodProvider } from '@autoform/zod'
 
-const schemaProvider = new ZodProvider(AppOptionsSchema)
+const schemaProvider = new ZodProvider(InstanceOptionsSchema)
 
-export function OptionsForm() {
-  const initialValues = useAtomValue(optionsAtom)
+export const Route = createFileRoute('/_layout/')({
+  component: OptionsForm,
+  wrapInSuspense: true,
+})
+
+function OptionsForm() {
+  const [initialValues, setOptions] = useAtom(optionsAtom)
   const { toast } = useToast()
   console.log(initialValues)
   const handleSubmit = useCallback(
-    async (data: z.infer<typeof AppOptionsSchema>) => {
+    async (data: z.infer<typeof InstanceOptionsSchema>) => {
       const client = createClient(data.url, data.apiKey)
 
       try {
@@ -28,6 +34,7 @@ export function OptionsForm() {
           })
           return
         }
+
         console.log(res)
       } catch (error) {
         toast({
@@ -36,12 +43,12 @@ export function OptionsForm() {
         })
         return
       }
-      await chrome.storage.sync.set(data)
+      await setOptions(data)
       toast({
         title: 'Config Saved',
       })
     },
-    [toast],
+    [toast, setOptions],
   )
 
   return (

@@ -9,5 +9,16 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "harper-ls.linters.spaces": false
+  "harper-ls.linters.spaces": false,
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/.hg/store/**": true,
+    "src/options/routeTree.gen.ts": true
+  },
+  "typescript.preferences.autoImportFileExcludePatterns": [
+    "**/node_modules/@radix-ui/**",
+    "**/node_modules/react-aria-components/**",
+    "**/node_modules/lucide-react/**"
+  ]
 }
