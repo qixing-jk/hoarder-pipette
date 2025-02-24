@@ -1,5 +1,5 @@
 export interface SearchEngine {
-  url: string;
-  getQuery: () => string | null;
-  getRenderRoot: () => HTMLElement;
+  url: string
+  getQuery: () => string | null
+  getRenderRoot: () => HTMLElement
 }
