@@ -1,21 +1,14 @@
-name: GitHub Pages
-
 on:
   push:
     branches:
       - main
-    paths:
-      - ".github/workflows/docs.yml"
-      - "docs/**"
   pull_request:
 
+name: test
+
 jobs:
-  docs:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -28,16 +21,9 @@ jobs:
         with:
           node-version: "22"
           cache: "pnpm"
-
       - run: pnpm install
       - uses: actions/cache@v4
         with:
           path: .moon/cache
-          key: ${{ runner.os }}-moon-docs
-      - run: moon run docs:build
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
-        if: github.ref == 'refs/heads/main'
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/dist
+          key: ${{ runner.os }}-moon
+      - run: pnpm test

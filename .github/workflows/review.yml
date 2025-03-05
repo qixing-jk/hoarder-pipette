@@ -1,13 +1,14 @@
+name: review
+
 on:
+  pull_request:
   push:
     branches:
       - main
-  pull_request:
-
-name: build
 
 jobs:
-  build:
+  tsc:
+    name: runner / tsc
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,10 +21,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-          cache: "pnpm"
+          cache: pnpm
       - run: pnpm install
-      - uses: actions/cache@v4
+      - uses: EPMatt/reviewdog-action-tsc@v1
         with:
-          path: .moon/cache
-          key: ${{ runner.os }}-moon
-      - run: pnpm build
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          level: error
+      - run: pnpm run typecheck
