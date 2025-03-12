@@ -1,5 +1,20 @@
+fileGroups:
+  sources:
+    - atoms/**/*
+    - components/**/*
+    - hooks/**/*
+    - lib/**/*
+    - schemas/**/*
+    - src/**/*
+    - styles/**/*
+    - client.ts
+    - store.ts
+    - tailwind.config.js
+    - postcss.config.js
+    - manifest.json
 tasks:
   build-logo:
+    type: build
     script: |
       rsvg-convert -h 16 assets/logo.svg > assets/logo16.png
       rsvg-convert -h 48 assets/logo.svg > assets/logo48.png
@@ -18,39 +33,45 @@ tasks:
       - assets/logo48.png
       - assets/logo128.png
       - assets/logo256.png
-  build-ext:
+  build-ext-chrome:
+    type: build
     command:
       - extension
       - build
       - --zip
-      - --browser=chrome,firefox
+      - --browser=chrome
     platform: node
     inputs:
-      - atoms/**/*
-      - components/**/*
-      - hooks/**/*
-      - lib/**/*
-      - schemas/**/*
-      - src/**/*
-      - styles/**/*
-      - client.ts
-      - store.ts
-      - tailwind.config.js
-      - postcss.config.js
-      - manifest.json
+      - "@group(sources)"
     outputs:
-      - dist/**/*
+      - dist/chrome/**/*
+  build-ext-firefox:
+    type: build
+    command:
+      - extension
+      - build
+      - --zip
+      - --browser=firefox
+    platform: node
+    inputs:
+      - "@group(sources)"
+    outputs:
+      - dist/firefox/**/*
   build:
+    type: build
     command: noop
     deps:
-      - build-ext
+      - build-ext-chrome
+      - build-ext-firefox
   dev:
+    type: run
     command:
       - extension
       - dev
     local: true
     platform: node
   start:
+    type: run
     command:
       - extension
       - start
@@ -62,10 +83,12 @@ tasks:
     preset: watcher
     platform: node
   typecheck:
+    type: test
     command: tsc --noEmit
     platform: node
     local: true
   typecheck-watch:
+    type: run
     command: tsc --noEmit --watch
     platform: node
     local: true
