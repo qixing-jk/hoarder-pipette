@@ -16,9 +16,13 @@ export default defineConfig({
       logo: {
         src: './src/assets/logo.svg',
       },
-      social: {
-        github: 'https://github.com/DanSnow/hoarder-pipette',
-      },
+      social: [
+        {
+          icon: 'github',
+          label: 'Github',
+          href: 'https://github.com/DanSnow/hoarder-pipette',
+        },
+      ],
       editLink: {
         baseUrl: 'https://github.com/DanSnow/hoarder-pipette/edit/main/docs/',
       },
