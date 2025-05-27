@@ -19,7 +19,12 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["./*"]
-    }
+    },
+    "plugins": [
+      {
+        "name": "@effect/language-service"
+      }
+    ]
   },
   "include": ["./"],
   "exclude": ["node_modules", "dist", "docs"]
