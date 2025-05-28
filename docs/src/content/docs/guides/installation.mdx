@@ -6,12 +6,24 @@ sidebar:
 ---
 
 import ChromeWebstore from '@/components/ChromeWebstore.astro'
+import { Aside } from '@astrojs/starlight/components';
 
 ## Install from extension store
 
 <ChromeWebstore />
 
 ## Install from GitHub
+
+### Firefox
+
+1. Download the latest `.xpi` file from the [latest release page](https://github.com/DanSnow/hoarder-pipette/releases/latest) on GitHub.
+2. Open Firefox and go to `about:debugging#/runtime/this-firefox`.
+3. Click "Load Temporary Add-on...".
+4. Select the downloaded `.xpi` file.
+
+<Aside type="caution">
+Add-ons installed using the "Load Temporary Add-on..." method are **temporary** and will be removed when you close and restart Firefox. This is the current method for manual installation until Hoarder's Pipette is available on the official Firefox Add-ons store. For a persistent installation, please await the official store release.
+</Aside>
 
 ### Chrome
 
