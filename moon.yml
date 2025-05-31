@@ -15,17 +15,10 @@ fileGroups:
 tasks:
   build-logo:
     type: build
-    script: |
-      rsvg-convert -h 16 assets/logo.svg > assets/logo16.png
-      rsvg-convert -h 48 assets/logo.svg > assets/logo48.png
-      rsvg-convert -h 96 assets/logo.svg > assets/logo96.png
-      rsvg-convert -h 128 assets/logo.svg > assets/logo128.png
-      rsvg-convert -h 256 assets/logo.svg > assets/logo256.png
-      magick -size 128x128 xc:transparent assets/canvas.png
-      magick assets/canvas.png assets/logo96.png -gravity center -composite assets/logo96-extent.png
-      rm assets/canvas.png
-      cp assets/logo.svg docs/public/favicon.svg
-      cp assets/logo.svg docs/src/assets/logo.svg
+    command:
+      - tsx
+      - build/build-logo.mts
+    platform: node
     inputs:
       - assets/logo.svg
     outputs:
@@ -74,7 +67,7 @@ tasks:
     type: run
     command:
       - tsx
-      - dev-scripts/dev.mts
+      - build/dev.mts
       - chrome
     local: true
     platform: node
