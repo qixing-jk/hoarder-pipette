@@ -1,6 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:js-app", ":semanticPrefixChore", ":automergeStableNonMajor", ":maintainLockFilesWeekly"],
+  "extends": [
+    "config:js-app",
+    ":semanticCommitTypeAll(chore)",
+    ":combinePatchMinorReleases",
+    ":automergeStableNonMajor",
+    ":maintainLockFilesWeekly"
+  ],
   "packageRules": [
     {
       "automerge": true,
