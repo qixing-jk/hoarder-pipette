@@ -7,7 +7,11 @@
   "name": "hoarder-pipette",
   "description": "An extension to inject bookmarks from your Hoarder app",
   "version": "1.4.1",
-  "keywords": ["extension", "browser-extension", "hoarder"],
+  "keywords": [
+    "extension",
+    "browser-extension",
+    "hoarder"
+  ],
   "scripts": {
     "build": "moon run build --",
     "start": "moon run start --",
@@ -19,7 +23,7 @@
     "typecheck-watch": "moon run typecheck-watch --"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.0.0",
     "@effect/language-service": "0.21.1",
     "@effect/vitest": "0.23.8",
     "@egoist/tailwindcss-icons": "1.9.0",
