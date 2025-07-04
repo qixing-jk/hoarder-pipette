@@ -1,4 +1,4 @@
-import type { ReactNode } from '@tanstack/react-router'
+import type { ReactNode } from 'react'
 import { createContext, use } from 'react'
 
 export const StoryContext = createContext<(() => ReactNode) | null>(null)
