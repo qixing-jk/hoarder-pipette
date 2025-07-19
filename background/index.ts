@@ -1,4 +1,4 @@
-import { experimental_RPCHandler as RPCHandler } from '@orpc/server/message-port'
+import { RPCHandler } from '@orpc/server/message-port'
 import browser from 'webextension-polyfill'
 import { appRouter } from '~/orpc'
 import { registerAll } from './dynamic-search-engine'

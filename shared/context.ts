@@ -1,5 +1,5 @@
 import { createORPCClient } from '@orpc/client'
-import { experimental_RPCLink as RPCLink } from '@orpc/client/message-port'
+import { RPCLink } from '@orpc/client/message-port'
 import type { RouterClient } from '@orpc/server'
 import { createTanstackQueryUtils } from '@orpc/tanstack-query'
 import { QueryClient } from '@tanstack/react-query'
