@@ -13,7 +13,7 @@ export function requestOrigin(origin: string) {
 export function requestSite(engine: SupportSearchEngine) {
   return pipe(
     engine.matches,
-    Array.filter(Predicate.struct({ isEnabled: Equal.equals(false) })),
+    Array.filter(Predicate.struct({ isEnabled: Equal.equals(false)<boolean> })),
     Array.map((match) => match.originUrl),
     (origins) => requestOrigins(origins),
   )

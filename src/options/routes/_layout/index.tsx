@@ -3,12 +3,12 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Effect, pipe } from 'effect'
 import { useAtom } from 'jotai'
 import { useCallback } from 'react'
+import { toast } from 'sonner'
 import { withTrailingSlash } from 'ufo'
 import type { z } from 'zod/v4'
 import { optionsAtom } from '~/atoms/storage'
 import { AutoForm } from '~/components/ui/autoform'
 import { Button } from '~/components/ui/button'
-import { useToast } from '~/hooks/use-toast'
 import { toOriginUrl } from '~/lib/utils'
 import { InstanceOptionsSchema } from '~/schemas/options'
 import { requestOrigin } from '../../permission'
@@ -23,7 +23,6 @@ export const Route = createFileRoute('/_layout/')({
 function OptionsForm() {
   const { queryClient, orpc } = Route.useRouteContext()
   const [initialValues, setOptions] = useAtom(optionsAtom)
-  const { toast } = useToast()
   console.log(initialValues)
   const handleSubmit = useCallback(
     async (data: z.infer<typeof InstanceOptionsSchema>) => {
@@ -35,26 +34,22 @@ function OptionsForm() {
         console.log(res)
         if (res.ok) {
           await setOptions(data)
-          toast({
-            title: 'Config Saved',
-          })
+          toast('Config Saved')
           return
         }
 
-        toast({
-          title: 'Invalid config, please check your config and try again.',
+        toast('Invalid config, please check your config and try again.', {
           description: res.message || `Expected status 200, but got ${res.status}`,
         })
         return
       } catch (error) {
-        toast({
-          title: 'Invalid config, please check your config and try again.',
+        toast('Invalid config, please check your config and try again.', {
           description: (error as Error).message,
         })
         return
       }
     },
-    [toast, setOptions, queryClient, orpc],
+    [setOptions, queryClient, orpc],
   )
 
   return (
