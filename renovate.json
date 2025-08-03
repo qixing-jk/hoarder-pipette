@@ -13,6 +13,10 @@
       "automerge": true,
       "matchDatasources": ["npm"],
       "matchPackageNames": ["@astrojs/starlight", "lucide-react", "@effect/vitest"]
+    },
+    {
+      "matchPackageNames": ["@orpc/**"],
+      "groupName": "orpc monorepo"
     }
   ]
 }
