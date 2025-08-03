@@ -5,7 +5,8 @@
     ":semanticCommitTypeAll(chore)",
     ":combinePatchMinorReleases",
     ":automergeStableNonMajor",
-    ":maintainLockFilesWeekly"
+    ":maintainLockFilesWeekly",
+    "customManagers:biomeVersions"
   ],
   "packageRules": [
     {
