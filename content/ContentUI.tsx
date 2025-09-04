@@ -29,7 +29,7 @@ export function ContentUI() {
 
   return (
     <div className={cn({ dark: isDark })}>
-      <HoarderCard key={userQuery} userQuery={userQuery} className="min-w-[25rem]" />
+      <HoarderCard key={userQuery} userQuery={userQuery} />
       <Toaster />
       <div ref={setContainer} />
     </div>
