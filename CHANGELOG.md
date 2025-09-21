@@ -1,5 +1,42 @@
 # Changelog
 
+## [1.6.0](https://github.com/qixing-jk/hoarder-pipette/compare/hoarder-pipette-v1.5.1...hoarder-pipette-v1.6.0) (2025-09-21)
+
+
+### Features
+
+* add web accessible resources for content script styles ([f67eda4](https://github.com/qixing-jk/hoarder-pipette/commit/f67eda4caa8459e3c503b2df07198a40832e8551))
+* **bookmark-preview:** enhance tag link hover effect ([cb8b563](https://github.com/qixing-jk/hoarder-pipette/commit/cb8b563fafb84a2798d50a1e2f396e21e9766728))
+* **bookmark-preview:** make tags clickable links ([1ab6987](https://github.com/qixing-jk/hoarder-pipette/commit/1ab698746e97a7053bb2e900ebf4cd08b9823ae7))
+* **bookmark:** add formatted date display for bookmark preview ([9d4bd7e](https://github.com/qixing-jk/hoarder-pipette/commit/9d4bd7e1cf3cb2a7cdd3f05d9c0a50cd718117b0))
+* **bookmark:** enhance BookmarkPreview and HoarderCard component with new design ([0f60693](https://github.com/qixing-jk/hoarder-pipette/commit/0f60693fbcf990728c377310b9b19a7cc03b232f))
+* **bookmark:** enhance BookmarkPreview and HoarderCard component with new design ([5c0e85f](https://github.com/qixing-jk/hoarder-pipette/commit/5c0e85f70c92d9f48b68feba4aceaf3525e28726))
+* **BookmarkPreview:** enable display of tag names in bookmarks ([fe2ac56](https://github.com/qixing-jk/hoarder-pipette/commit/fe2ac56b0ee433d441b039d44e7d04957332eef4))
+* **bookmarks:** integrate Karakeep preview and remove inline menu ([8f58651](https://github.com/qixing-jk/hoarder-pipette/commit/8f586512bbd5d920e5134e887d49583988e69aa5))
+* **HoarderCard:** add loading/error states and improve bookmark rendering ([fd68c78](https://github.com/qixing-jk/hoarder-pipette/commit/fd68c789f1df591bb692cf077946613a8d13aeb3))
+* **HoarderCard:** remove shadow from card component ([6f5c993](https://github.com/qixing-jk/hoarder-pipette/commit/6f5c9937cd2d8076f44a9141232fcfacd88f253d))
+* improve layout of BookmarkPreview component ([f84b79b](https://github.com/qixing-jk/hoarder-pipette/commit/f84b79bfe34fd32bafcb9c68ae47fc561645d400))
+* refactor HoarderCard to use utility function for class names ([5735928](https://github.com/qixing-jk/hoarder-pipette/commit/57359287cc93dcc0ca43a6163b532bf0f2d01d21))
+* replace ScrollArea with auto-height div for dynamic content ([9ae0402](https://github.com/qixing-jk/hoarder-pipette/commit/9ae040252c9786a8e09db1731bbc1d50d5d4bec3))
+* request karakeep host permission ([#569](https://github.com/qixing-jk/hoarder-pipette/issues/569)) ([26f2d87](https://github.com/qixing-jk/hoarder-pipette/commit/26f2d875d2d424aeddec46dea5f9bcc5866e0891))
+* **styles:** adjust container styling and remove redundant class ([53df7dc](https://github.com/qixing-jk/hoarder-pipette/commit/53df7dcbbb249f65277e934bd0afc8b07895d88b))
+
+
+### Bug Fixes
+
+* add missing Vite client type reference in env.d.ts ([16fb9b2](https://github.com/qixing-jk/hoarder-pipette/commit/16fb9b24367c5bb9ede3bb34e0f334a19d77377e))
+* **bookmarks:** fix invalid assetType values causing output validation error ([8f9b7e1](https://github.com/qixing-jk/hoarder-pipette/commit/8f9b7e1b0e1cd7bfff7fd9ab0c08db5c0716d112))
+* **content:** ensure card visibility in Google search results ([42ab0e8](https://github.com/qixing-jk/hoarder-pipette/commit/42ab0e82a9404b27042ca29dad49259b7fafef37))
+* **content:** improve handling of CSS [@property](https://github.com/property) injection ([92accd0](https://github.com/qixing-jk/hoarder-pipette/commit/92accd00dba0e069757896a2042727a44593a8a5))
+* **content:** resolve tailwind CSS import and style injection issues ([83492ab](https://github.com/qixing-jk/hoarder-pipette/commit/83492ab23232f227bbb37e01458c8c7438276178))
+* handle [@property](https://github.com/property) rules in shadow DOM by injecting into document head ([e169aae](https://github.com/qixing-jk/hoarder-pipette/commit/e169aaef6f539b2eee616bcf4ece5d8153599e45))
+* update lockfile ([ec16c5d](https://github.com/qixing-jk/hoarder-pipette/commit/ec16c5d5a29ae45ed989763d66f2439e4f585bd5))
+
+
+### Performance Improvements
+
+* Optimize content script initialization timing ([b14ed77](https://github.com/qixing-jk/hoarder-pipette/commit/b14ed77ca245c014987a94e6efbe49e1e64a293c))
+
 ## [1.5.1](https://github.com/DanSnow/hoarder-pipette/compare/hoarder-pipette-v1.5.0...hoarder-pipette-v1.5.1) (2025-08-05)
 
 
